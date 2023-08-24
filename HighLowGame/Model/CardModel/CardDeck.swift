@@ -9,8 +9,8 @@ import Foundation
 
 class CardDeck {
     
-    private var deck = [Card]()
-    private var usedDeck = [Card]()
+    var deck = [Card]()
+    var usedDeck = [Card]()
     
     let cardC2 = Card(name: "clubs_2", value: 2)
     let cardC3 = Card(name: "clubs_3", value: 3)
@@ -125,6 +125,24 @@ class CardDeck {
         deck.append(cardSQ)
         deck.append(cardSK)
         deck.append(cardSA)
+        
+        deck.shuffle()
+    }
+    
+    func getCard() -> Card {
+        if deck.isEmpty {
+            deck = usedDeck
+            usedDeck = [Card]()
+            deck.shuffle()
+        }
+        
+        
+        let card = deck[0]
+        deck.remove(at: 0)
+        usedDeck.append(card)
+        
+        return card
+        
     }
 }
 

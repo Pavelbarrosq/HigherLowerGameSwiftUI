@@ -85,8 +85,8 @@
 		E9C011BA2A966F7300929F66 /* CardModel */ = {
 			isa = PBXGroup;
 			children = (
-				E9C011B82A96684500929F66 /* Card.swift */,
 				E9C011BB2A966FA900929F66 /* CardDeck.swift */,
+				E9C011B82A96684500929F66 /* Card.swift */,
 			);
 			path = CardModel;
 			sourceTree = "<group>";
