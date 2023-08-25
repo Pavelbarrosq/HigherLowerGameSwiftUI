@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E90B3C8B2A992A9E00E0168C /* CountdownTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90B3C8A2A992A9E00E0168C /* CountdownTimerView.swift */; };
+		E90B3C952A99429900E0168C /* CountdownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90B3C942A99429900E0168C /* CountdownTimer.swift */; };
 		E9C011AA2A9652C400929F66 /* HighLowGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C011A92A9652C400929F66 /* HighLowGameApp.swift */; };
 		E9C011AC2A9652C400929F66 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C011AB2A9652C400929F66 /* Home.swift */; };
 		E9C011AE2A9652C500929F66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9C011AD2A9652C500929F66 /* Assets.xcassets */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E90B3C8A2A992A9E00E0168C /* CountdownTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimerView.swift; sourceTree = "<group>"; };
+		E90B3C942A99429900E0168C /* CountdownTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimer.swift; sourceTree = "<group>"; };
 		E9C011A62A9652C400929F66 /* HighLowGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HighLowGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9C011A92A9652C400929F66 /* HighLowGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighLowGameApp.swift; sourceTree = "<group>"; };
 		E9C011AB2A9652C400929F66 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
@@ -38,6 +42,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E90B3C872A9925B200E0168C /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				E90B3C8A2A992A9E00E0168C /* CountdownTimerView.swift */,
+				E90B3C942A99429900E0168C /* CountdownTimer.swift */,
+			);
+			path = Timer;
+			sourceTree = "<group>";
+		};
 		E9C0119D2A9652C400929F66 = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +90,7 @@
 		E9C011B72A96682A00929F66 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E90B3C872A9925B200E0168C /* Timer */,
 				E9C011BA2A966F7300929F66 /* CardModel */,
 			);
 			path = Model;
@@ -170,8 +184,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E90B3C8B2A992A9E00E0168C /* CountdownTimerView.swift in Sources */,
 				E9C011AC2A9652C400929F66 /* Home.swift in Sources */,
 				E9C011B92A96684500929F66 /* Card.swift in Sources */,
+				E90B3C952A99429900E0168C /* CountdownTimer.swift in Sources */,
 				E9C011BC2A966FA900929F66 /* CardDeck.swift in Sources */,
 				E9C011AA2A9652C400929F66 /* HighLowGameApp.swift in Sources */,
 				E9C011BF2A9675BC00929F66 /* NewGame.swift in Sources */,

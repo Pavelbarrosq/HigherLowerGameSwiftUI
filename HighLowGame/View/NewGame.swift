@@ -8,22 +8,21 @@
 import SwiftUI
 
 struct NewGame: View {
-    @State private var timeRemaining = 90
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
     
     @State private var currentCardName: String = "blue_back"
     @State private var currentCardValue: Int = 0
     @State private var isDisabled: Bool = true
+    @StateObject var countDownTimer = CountdownTimer()
     
     var body: some View {
         VStack {
+            
             HStack {
-                Text("Time: \(timeRemaining)")
-            }.font(.title)
-                .foregroundColor(.white)
-                .padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 20))
-                .background(.black.opacity(0.75))
-                .clipShape(Capsule())
+                if isDisabled != true {
+                    CountdownTimerView()
+                }
+            }
             
             Spacer()
             
@@ -50,15 +49,11 @@ struct NewGame: View {
                 isDisabled = false
             }
             
-            
             Spacer()
             
         }.padding()
-            .onReceive(timer) { time in
-                if timeRemaining > 0 {
-                    timeRemaining -= 1
-                }
-            }
+            .environmentObject(countDownTimer)
+
     }
 }
 
