@@ -13,7 +13,6 @@ struct NewGame: View {
     @State private var currentCardName: String = "blue_back"
     @State private var currentCardValue: Int = 0
     @State private var isDisabled: Bool = true
-    @StateObject var countDownTimer = CountdownTimer()
     
     var body: some View {
         VStack {
@@ -52,7 +51,6 @@ struct NewGame: View {
             Spacer()
             
         }.padding()
-            .environmentObject(countDownTimer)
 
     }
 }
