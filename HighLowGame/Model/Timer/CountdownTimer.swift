@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct CountdownTimer {
-    var count = 10
+    var count = 90
     var isOver: Bool = false
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 }

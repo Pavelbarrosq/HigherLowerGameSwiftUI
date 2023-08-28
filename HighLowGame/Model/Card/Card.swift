@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SwiftUI
 
 class Card {
     var name: String
@@ -16,8 +15,5 @@ class Card {
         self.name = name
         self.value = value
     }
-    
-    var image: Image {
-        return Image(name)
-    }
+
 }
