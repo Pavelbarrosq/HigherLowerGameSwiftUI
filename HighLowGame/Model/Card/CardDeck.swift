@@ -132,7 +132,7 @@ class CardDeck {
     func getCard() -> Card {
         if deck.isEmpty {
             deck = usedDeck
-            usedDeck = [Card]()
+//            usedDeck = [Card]()
             deck.shuffle()
         }
         

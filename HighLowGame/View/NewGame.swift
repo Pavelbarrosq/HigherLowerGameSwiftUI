@@ -14,7 +14,7 @@ struct NewGame: View {
     @State private var score = 0
     @State private var decreaseTime = 5
     @State private var currentCardImage = "blue_back"
-    @State private var cardDeck = CardDeck()
+    @State private var cardDeck: CardDeck?
     @State private var currentCard: Card?
     @State private var nextCard: Card?
     @State private var isDisabled: Bool = false
@@ -89,57 +89,71 @@ struct NewGame: View {
     }
     
     func play() {
+        cardDeck = CardDeck()
         
-        currentCard = cardDeck.getCard()
+        currentCard = cardDeck!.getCard()
+        currentCardImage = currentCard!.name
+        nextCard = cardDeck!.getCard()
         
-        guard let cardImage = currentCard?.name else {return}
-        currentCardImage = cardImage
-        nextCard = cardDeck.getCard()
+        print("DEAL CURRENT IS: \(String(describing: currentCard?.value))")
+        print("DEAL NEXT IS: \(String(describing: nextCard?.value))")
+        
+        if currentCard!.value == nextCard!.value {
+            nextCard = cardDeck!.getCard()
+        }
         
         
     }
     
     func nextCardOnScreen() {
-
-        if currentCard?.value != nextCard?.value {
-            currentCard = nextCard
-            guard let cardImage = nextCard?.name else {return}
-            currentCardImage = cardImage
-        }
         
-        if currentCard?.value == nextCard?.value {
-            currentCard = cardDeck.getCard()
+        currentCardImage = nextCard!.name
+        currentCard = nextCard
+        nextCard = cardDeck!.getCard()
+        
+        print("CURRENT: \(currentCard!.value)")
+        print("NEXTCARD: \(nextCard!.value)")
+
+        
+        if currentCard!.value == nextCard!.value {
+            nextCard = cardDeck!.getCard()
+            
             nextCardOnScreen()
         }
+        
+        
+        
     }
     
     func checkAnswerForLowerButton() {
-        guard let nextCardValue = nextCard?.value, let currentCardValue = currentCard?.value else {
-            print("knas")
-            return
-        }
-        if nextCardValue < currentCardValue {
-            print("NEXTCARD VALUE: \(nextCardValue)")
-            print("CURRENTCARD VALUE: \(currentCardValue)")
+//        guard let nextCardValue = nextCard?.value, let currentCardValue = currentCard?.value else {
+//            print("knas")
+//            return
+//        }
+        if nextCard!.value < currentCard!.value {
+//            print("NEXTCARD VALUE: \(nextCardValue)")
+//            print("CURRENTCARD VALUE: \(currentCardValue)")
             increaseScore()
             nextCardOnScreen()
-        } else {
+        } else if nextCard!.value > currentCard!.value {
             timer.count -= decreaseTime
+            nextCardOnScreen()
         }
     }
     
     func checkAnswerForHigherButton() {
-        guard let nextCardValue = nextCard?.value, let currentCardValue = currentCard?.value else {
-            print("knas")
-            return
-        }
-        if nextCardValue > currentCardValue {
-            print("NEXTCARD VALUE: \(nextCardValue)")
-            print("CURRENTCARD VALUE: \(currentCardValue)")
+//        guard let nextCardValue = nextCard?.value, let currentCardValue = currentCard?.value else {
+//            print("knas")
+//            return
+//        }
+        if nextCard!.value > currentCard!.value {
+//            print("NEXTCARD VALUE: \(nextCardValue)")
+//            print("CURRENTCARD VALUE: \(currentCardValue)")
             increaseScore()
             nextCardOnScreen()
-        } else {
+        } else if nextCard!.value < currentCard!.value{
             timer.count -= decreaseTime
+            nextCardOnScreen()
         }
     }
     
