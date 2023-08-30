@@ -9,8 +9,6 @@ import SwiftUI
 
 struct NewGame: View {
 
-//    @State private var currentCardName: String = "blue_back"
-//    @State private var currentCardValue: Int = 0
     @State private var score = 0
     @State private var decreaseTime = 5
     @State private var currentCardImage = "blue_back"
@@ -21,138 +19,134 @@ struct NewGame: View {
     @State private var timeLeft: Int = 0
     @State var timer = CountdownTimer()
     @State var gameHasStarted = true
+    @State private var isGameOver = false
+    @State private var imageShadowColor = Color.black
+    @State private var isRight = false
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
-        ZStack {
-            
-            // Add background color
-            
-            VStack {
+        NavigationStack {
+            ZStack {
+                // Add background color
                 
-                HStack {
-                    Text("Score: \(score)")
-                        .font(.title2)
-                        .foregroundColor(.white)
-                        .padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 20))
-                        .background(.black.opacity(0.75))
-                        .clipShape(Capsule())
+                VStack {
+                    HStack {
+                        Text("Score: \(score)")
+                            .font(.title2)
+                            .foregroundColor(colorScheme == .dark ? .white : .black)
+                            .padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 20))
+                        
+                        Spacer()
+                        
+                        Text("Time: \(timer.count)")
+                        
+                            .font(.title2)
+                            .foregroundColor(colorScheme == .dark ? .white : .black)
+                            .padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 20))
+                    }
                     
                     Spacer()
                     
-                    Text("Time: \(timer.count)")
+                    Image(currentCardImage)
+                    .padding()
+                    .shadow(color: imageShadowColor, radius: 20)
+                    .aspectRatio(contentMode: .fill)
                     
-                        .font(.title2)
-                        .foregroundColor(.white)
-                        .padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 20))
-                        .background(.black.opacity(0.75))
-                        .clipShape(Capsule())
+                    Spacer()
+                        
+                    HStack {
+                        Button("Lower") {
+                            checkAnswerForLowerButton()
+                        }
+                        .foregroundColor(colorScheme == .dark ? .white : .black)
+                        .disabled(isDisabled)
+                        .font(.title)
+                        .buttonStyle(.bordered)
+                        
+                        Button("Higher") {
+                            checkAnswerForHigherButton()
+                        }
+                        .foregroundColor(colorScheme == .dark ? .white : .black)
+                        .disabled(isDisabled)
+                        .buttonStyle(.bordered)
+                        .font(.title)
+                    }
+    
+                    Spacer()
+                    
                 }
-                
-                Spacer()
-                
-                Image(currentCardImage)
                 .padding()
-                .shadow(radius: 7)
-                
-                Spacer()
-                    
-                
-                HStack {
-                    Button("Lower") {
-                        checkAnswerForLowerButton()
-                    }
-                    .disabled(isDisabled)
-                    .font(.title)
-                    .padding()
-                    
-                    Button("Higher") {
-                        checkAnswerForHigherButton()
-                    }
-                    .disabled(isDisabled)
-                    .font(.title)
-                    .padding()
-                }
-                
-                Spacer()
-                
-            }.padding()
-            .onReceive(timer.timer) { time in
+                .onReceive(timer.timer) { time in
                     timerControl()
                 }
-            .onAppear() {
-                print("ONAPPEAR")
-                play()
+                .onAppear() {
+                    play()
+                }
             }
         }
+        .navigationDestination(isPresented: $isGameOver) {
+            EndGame()
+        }
+        .navigationBarBackButtonHidden(true)
         
         
     }
     
     func play() {
         cardDeck = CardDeck()
+        guard let cCard = cardDeck?.getCard(),
+              let nCard = cardDeck?.getCard() else {return}
+        currentCard = cCard
+        currentCardImage = cCard.name
+        nextCard = nCard
         
-        currentCard = cardDeck!.getCard()
-        currentCardImage = currentCard!.name
-        nextCard = cardDeck!.getCard()
-        
-        print("DEAL CURRENT IS: \(String(describing: currentCard?.value))")
-        print("DEAL NEXT IS: \(String(describing: nextCard?.value))")
-        
-        if currentCard!.value == nextCard!.value {
-            nextCard = cardDeck!.getCard()
+        if cCard.value == nCard.value {
+            guard let nCard = cardDeck?.getCard() else {return}
+            nextCard = nCard
         }
-        
-        
     }
     
     func nextCardOnScreen() {
-        
-        currentCardImage = nextCard!.name
+        guard let cCardImage = nextCard?.name else {return}
+        currentCardImage = cCardImage
         currentCard = nextCard
-        nextCard = cardDeck!.getCard()
-        
-        print("CURRENT: \(currentCard!.value)")
-        print("NEXTCARD: \(nextCard!.value)")
+        guard let nCard = cardDeck?.getCard() else {return}
+        nextCard = nCard
 
         
-        if currentCard!.value == nextCard!.value {
-            nextCard = cardDeck!.getCard()
-            
+        if currentCard?.value == nCard.value {
+            guard let nCard = cardDeck?.getCard() else {return}
+            nextCard = nCard
             nextCardOnScreen()
         }
-        
-        
-        
     }
     
     func checkAnswerForLowerButton() {
-//        guard let nextCardValue = nextCard?.value, let currentCardValue = currentCard?.value else {
-//            print("knas")
-//            return
-//        }
-        if nextCard!.value < currentCard!.value {
-//            print("NEXTCARD VALUE: \(nextCardValue)")
-//            print("CURRENTCARD VALUE: \(currentCardValue)")
+        guard let nCardVal = nextCard?.value,
+              let cCardVal = currentCard?.value else {return}
+        
+        if nCardVal < cCardVal {
             increaseScore()
+            imageFeedback(isPulsing: true)
             nextCardOnScreen()
-        } else if nextCard!.value > currentCard!.value {
+        } else if nCardVal > cCardVal {
             timer.count -= decreaseTime
+            imageFeedback(isPulsing: false)
             nextCardOnScreen()
         }
     }
     
     func checkAnswerForHigherButton() {
-//        guard let nextCardValue = nextCard?.value, let currentCardValue = currentCard?.value else {
-//            print("knas")
-//            return
-//        }
-        if nextCard!.value > currentCard!.value {
-//            print("NEXTCARD VALUE: \(nextCardValue)")
-//            print("CURRENTCARD VALUE: \(currentCardValue)")
+        guard let nCardVal = nextCard?.value,
+              let cCardVal = currentCard?.value else {return}
+        
+        if nCardVal > cCardVal {
             increaseScore()
+            imageFeedback(isPulsing: true)
             nextCardOnScreen()
-        } else if nextCard!.value < currentCard!.value{
+        } else if nCardVal < cCardVal{
             timer.count -= decreaseTime
+            imageFeedback(isPulsing: false)
             nextCardOnScreen()
         }
     }
@@ -161,11 +155,14 @@ struct NewGame: View {
         score += 1
     }
     
+    
     func timerControl() {
         if (timer.count > 0) {
             timer.count -= 1
         } else if timer.count <= 0 {
             disablePlayButtons()
+            timer.count = 0
+            isGameOver = true
         }
     }
     
@@ -176,6 +173,14 @@ struct NewGame: View {
     
     func endTimer() {
         timer.timer.upstream.connect().cancel()
+    }
+    
+    func imageFeedback(isPulsing: Bool) {
+        if isPulsing {
+            imageShadowColor = .green
+        } else {
+            imageShadowColor = .red
+        }
     }
 }
 

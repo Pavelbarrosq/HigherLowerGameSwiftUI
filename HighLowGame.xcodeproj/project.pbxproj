@@ -15,6 +15,7 @@
 		E9C011BC2A966FA900929F66 /* CardDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C011BB2A966FA900929F66 /* CardDeck.swift */; };
 		E9C011BF2A9675BC00929F66 /* NewGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C011BE2A9675BC00929F66 /* NewGame.swift */; };
 		E9D378622A9B336F009614A4 /* CountdownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D378612A9B336F009614A4 /* CountdownTimer.swift */; };
+		E9DBBF882A9F884200657A1C /* EndGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DBBF872A9F884200657A1C /* EndGame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		E9C011BB2A966FA900929F66 /* CardDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDeck.swift; sourceTree = "<group>"; };
 		E9C011BE2A9675BC00929F66 /* NewGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGame.swift; sourceTree = "<group>"; };
 		E9D378612A9B336F009614A4 /* CountdownTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimer.swift; sourceTree = "<group>"; };
+		E9DBBF872A9F884200657A1C /* EndGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			children = (
 				E9C011AB2A9652C400929F66 /* Home.swift */,
 				E9C011BE2A9675BC00929F66 /* NewGame.swift */,
+				E9DBBF872A9F884200657A1C /* EndGame.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 			files = (
 				E9C011AC2A9652C400929F66 /* Home.swift in Sources */,
 				E9C011B92A96684500929F66 /* Card.swift in Sources */,
+				E9DBBF882A9F884200657A1C /* EndGame.swift in Sources */,
 				E9C011BC2A966FA900929F66 /* CardDeck.swift in Sources */,
 				E9C011AA2A9652C400929F66 /* HighLowGameApp.swift in Sources */,
 				E9C011BF2A9675BC00929F66 /* NewGame.swift in Sources */,
