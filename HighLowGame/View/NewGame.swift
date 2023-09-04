@@ -55,7 +55,7 @@ struct NewGame: View {
                     Spacer()
                         
                     HStack {
-                        Button("Lower") {
+                        Button(" Lower ") {
                             checkAnswerForLowerButton()
                         }
                         .foregroundColor(colorScheme == .dark ? .white : .black)
@@ -63,7 +63,7 @@ struct NewGame: View {
                         .font(.title)
                         .buttonStyle(.bordered)
                         
-                        Button("Higher") {
+                        Button(" Higher ") {
                             checkAnswerForHigherButton()
                         }
                         .foregroundColor(colorScheme == .dark ? .white : .black)
@@ -85,7 +85,7 @@ struct NewGame: View {
             }
         }
         .navigationDestination(isPresented: $isGameOver) {
-            EndGame()
+            EndGame(totalScore: score)
         }
         .navigationBarBackButtonHidden(true)
         
@@ -94,11 +94,14 @@ struct NewGame: View {
     
     func play() {
         cardDeck = CardDeck()
+        
         guard let cCard = cardDeck?.getCard(),
               let nCard = cardDeck?.getCard() else {return}
         currentCard = cCard
         currentCardImage = cCard.name
         nextCard = nCard
+        print("CURRENTCARD: \(cCard.value)")
+        print("NEXTCARD: \(nCard.value)")
         
         if cCard.value == nCard.value {
             guard let nCard = cardDeck?.getCard() else {return}
@@ -112,6 +115,9 @@ struct NewGame: View {
         currentCard = nextCard
         guard let nCard = cardDeck?.getCard() else {return}
         nextCard = nCard
+        
+        print("CURRENTCARD: \(currentCard!.value)")
+        print("NEXTCARD: \(nextCard!.value)")
 
         
         if currentCard?.value == nCard.value {

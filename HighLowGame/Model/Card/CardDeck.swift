@@ -24,7 +24,7 @@ class CardDeck {
     let cardCJ = Card(name: "clubs_jack", value: 11)
     let cardCQ = Card(name: "clubs_queen", value: 12)
     let cardCK = Card(name: "clubs_king", value: 13)
-    let cardCA = Card(name: "clubs_ace", value: 14)
+    let cardCA = Card(name: "clubs_ace", value: 1)
     
     let cardD2 = Card(name: "diamonds_2", value: 2)
     let cardD3 = Card(name: "diamonds_3", value: 3)
@@ -38,7 +38,7 @@ class CardDeck {
     let cardDJ = Card(name: "diamonds_jack", value: 11)
     let cardDQ = Card(name: "diamonds_queen", value: 12)
     let cardDK = Card(name: "diamonds_king", value: 13)
-    let cardDA = Card(name: "diamonds_ace", value: 14)
+    let cardDA = Card(name: "diamonds_ace", value: 1)
     
     let cardH2 = Card(name: "hearts_2", value: 2)
     let cardH3 = Card(name: "hearts_3", value: 3)
@@ -52,7 +52,7 @@ class CardDeck {
     let cardHJ = Card(name: "hearts_jack", value: 11)
     let cardHQ = Card(name: "hearts_queen", value: 12)
     let cardHK = Card(name: "hearts_king", value: 13)
-    let cardHA = Card(name: "hearts_ace", value: 14)
+    let cardHA = Card(name: "hearts_ace", value: 1)
     
     let cardS2 = Card(name: "spades_2", value: 2)
     let cardS3 = Card(name: "spades_3", value: 3)
@@ -66,7 +66,7 @@ class CardDeck {
     let cardSJ = Card(name: "spades_jack", value: 11)
     let cardSQ = Card(name: "spades_queen", value: 12)
     let cardSK = Card(name: "spades_king", value: 13)
-    let cardSA = Card(name: "spades_ace", value: 14)
+    let cardSA = Card(name: "spades_ace", value: 1)
     
     
     init() {
@@ -132,7 +132,7 @@ class CardDeck {
     func getCard() -> Card {
         if deck.isEmpty {
             deck = usedDeck
-//            usedDeck = [Card]()
+            usedDeck = [Card]()
             deck.shuffle()
         }
         

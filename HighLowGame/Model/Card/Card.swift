@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Card {
+struct Card {
     var name: String
     var value: Int
     
