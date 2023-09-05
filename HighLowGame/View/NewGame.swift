@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NewGame: View {
-
+    
     @State private var score = 0
     @State private var decreaseTime = 5
     @State private var currentCardImage = "blue_back"
