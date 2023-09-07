@@ -1,0 +1,32 @@
+/* 
+  Localizable.strings
+  HighLowGame
+
+  Created by Pavel on 2023-09-07.
+  
+*/
+
+"HOWTOPLAYINFO1_KEY" = "Ett kortdäck med 52 kort används i detta spel (inga jokrar). Kortdäcket blandas och ett kort visas på skärmen. \nEn timer börjar ränkna ned från 3, under dessa sekunder kan du ej klicka på Högre eller Lägre knappen. När timern har räknat ned från tre börjar spel timern ticka ned från en minut.";
+
+
+"HOWTOPLAYINFO2_KEY" = "Kortvärdet börjar med ett ess som anses vara det lägsta kortet (värdet 1) och kungar det högsta (värdet 13). \nSpelaren ska gissa på om nästa kort som kommer att visas på skärmen är ett högre eller lägre kort. Gissar man fel så dras det bort 5 sekunder från spelets timern, gissar man rätt belönas man med ett poäng. \n\nSamla så många poäng som möjligt, det högsta samlade poängen kommer att visas under rekord på spelets första skärm. Lycka till!";
+
+"LOWBUTTON_KEY" = " Lägre ";
+
+"HIGHBUTTON_KEY" = " Högre ";
+
+"STARTGAMEBUTTON_KEY" = "Starta nytt spel";
+
+"HOWTOPLAY_KEY" = "Hur spelar man?";
+
+"SCORE_KEY %@" = "Poäng: %@";
+
+"TIME_KEY %@" = "Tid: %@";
+
+"TOTALSCORE_KEY %@" = "Totala poäng är: %@";
+
+"HIGHSCORE_KEY %@" = "Hittils bästa poäng: %@";
+
+"HOMEBUTTON_KEY" = "Hem";
+
+"PLAYAGAINBUTTON_KEY" = "Spela Igen";

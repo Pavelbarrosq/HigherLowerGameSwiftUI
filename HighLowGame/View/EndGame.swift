@@ -14,15 +14,15 @@ struct EndGame: View {
     
     var body: some View {
         VStack {
-            Text("Total score is: \(totalScore)")
-                .padding()
             
-            Text("Current highs score is: \(highScore)")
+            Text(String(format: NSLocalizedString("TOTALSCORE_KEY %@", comment: ""), totalScore.description))
+            
+            Text(String(format: NSLocalizedString("HIGHSCORE_KEY %@", comment: ""), highScore.description))
         
             Spacer()
         
             HStack {
-                NavigationLink("Home", destination: Home())
+                NavigationLink("HOMEBUTTON_KEY", destination: Home())
                     .foregroundColor(.white)
                     .padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 20))
                         .background(.black.opacity(0.75))
@@ -31,7 +31,7 @@ struct EndGame: View {
                 
                 Spacer()
                 
-                NavigationLink("Play Again", destination: NewGame())
+                NavigationLink("PLAYAGAINBUTTON_KEY", destination: NewGame())
                     .foregroundColor(.white)
                     .padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 20))
                         .background(.black.opacity(0.75))

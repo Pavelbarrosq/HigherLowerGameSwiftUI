@@ -1,0 +1,32 @@
+/* 
+  Localizable.strings
+  HighLowGame
+
+  Created by Pavel on 2023-09-07.
+  
+*/
+
+"HOWTOPLAYINFO1_KEY" = "A deck of 52 cards is used for the game (no jokers). The deck is shuffled, and one card are placed on the display. \nA timer starts counting down from three, you cannot press Higher or Lower button before the timer hits zero. When timer hits zero a game timer starts counting down from one minute.";
+
+
+"HOWTOPLAYINFO2_KEY" = "The Card values starts with aces considered the lowest (value of 1) and kings being considered the highest (value of 13). \nThe player have to guess whether the next card on the deck will be of lower or higher value than the previous card before. If a guess is incorrect, player will loose five seconds from the game timer. A correct answer rewards with one point. \n\nGather as many point possible, the highest score will be displayed under HighScore on the first screen in the game. Good luck!";
+
+"LOWBUTTON_KEY" = " Lower ";
+
+"HIGHBUTTON_KEY" = " Higher ";
+
+"STARTGAMEBUTTON_KEY" = "Start new game";
+
+"HOWTOPLAY_KEY" = "How to play?";
+
+"SCORE_KEY %@" = "Score: %@";
+
+"TIME_KEY %@" = "Time: %@";
+
+"TOTALSCORE_KEY %@" = "Total score is: %@";
+
+"HIGHSCORE_KEY %@" = "Current highs score is: %@";
+
+"HOMEBUTTON_KEY" = "Home";
+
+"PLAYAGAINBUTTON_KEY" = "Play again";

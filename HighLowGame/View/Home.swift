@@ -8,23 +8,41 @@
 import SwiftUI
 
 struct Home: View {
-    var body: some View {
     
+    @State var howToPlayPresented = false
+    
+    var body: some View {
         NavigationStack {
             
             VStack {
                 
                 Spacer()
                 
-                NavigationLink("Start new game", destination: NewGame())
+                NavigationLink("STARTGAMEBUTTON_KEY", destination: NewGame())
                     .foregroundColor(.white)
                     .padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 20))
                         .background(.black.opacity(0.75))
                         .font(.title)
                         .clipShape(Capsule())
                 
+                Button("HOWTOPLAY_KEY") {
+                    howToPlayPresented.toggle()
+                }
+                .padding()
+                .foregroundColor(.black)
             }
         }
+        .sheet(isPresented: $howToPlayPresented) {
+                if #available(iOS 16.4, *) {
+                    GameInfo()
+                        .presentationBackground(.thinMaterial)
+                        .presentationDetents([.medium])
+                } else {
+                    GameInfo()
+                }
+                
+        }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

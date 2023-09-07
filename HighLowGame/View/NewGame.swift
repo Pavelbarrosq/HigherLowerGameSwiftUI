@@ -5,6 +5,7 @@
 //  Created by Pavel on 2023-08-23.
 //
 
+import CoreHaptics
 import SwiftUI
 
 struct NewGame: View {
@@ -31,45 +32,47 @@ struct NewGame: View {
                 
                 VStack {
                     HStack {
-                        Text("Score: \(score)")
+                        Text(String(format: NSLocalizedString("SCORE_KEY %@", comment: ""), score.description))
                             .font(.title2)
                             .foregroundColor(colorScheme == .dark ? .white : .black)
                             .padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 20))
-                        
+                            
                         Spacer()
                         
-                        Text("Time: \(timer.count)")
-                        
+                        Text(String(format: NSLocalizedString("TIME_KEY %@", comment: ""), timer.count.description))
                             .font(.title2)
                             .foregroundColor(colorScheme == .dark ? .white : .black)
                             .padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 20))
+                
                     }
                     
                     Spacer()
                     
                     Image(currentCardImage)
-                    .padding()
-                    .shadow(color: imageShadowColor, radius: 20)
-                    .aspectRatio(contentMode: .fill)
+                        .resizable()
+                        .frame(width: 300, height: 460)
+                        .shadow(color: imageShadowColor, radius: 20)
+                        .aspectRatio(contentMode: .fit)
+                        .padding()
                     
                     Spacer()
                         
                     HStack {
-                        Button(" Lower ") {
+                        Button("LOWBUTTON_KEY") {
                             checkAnswerForLowerButton()
                         }
-                        .foregroundColor(colorScheme == .dark ? .white : .black)
-                        .disabled(isDisabled)
-                        .font(.title)
-                        .buttonStyle(.bordered)
+                            .foregroundColor(colorScheme == .dark ? .white : .black)
+                            .disabled(isDisabled)
+                            .font(.title)
+                            .buttonStyle(.bordered)
                         
-                        Button(" Higher ") {
+                        Button("HIGHBUTTON_KEY") {
                             checkAnswerForHigherButton()
                         }
-                        .foregroundColor(colorScheme == .dark ? .white : .black)
-                        .disabled(isDisabled)
-                        .buttonStyle(.bordered)
-                        .font(.title)
+                            .foregroundColor(colorScheme == .dark ? .white : .black)
+                            .disabled(isDisabled)
+                            .buttonStyle(.bordered)
+                            .font(.title)
                     }
     
                     Spacer()
@@ -132,10 +135,12 @@ struct NewGame: View {
               let cCardVal = currentCard?.value else {return}
         
         if nCardVal < cCardVal {
+            Haptics.shared.notify(.success)
             increaseScore()
             imageFeedback(isPulsing: true)
             nextCardOnScreen()
         } else if nCardVal > cCardVal {
+            Haptics.shared.notify(.error)
             timer.count -= decreaseTime
             imageFeedback(isPulsing: false)
             nextCardOnScreen()
@@ -147,10 +152,12 @@ struct NewGame: View {
               let cCardVal = currentCard?.value else {return}
         
         if nCardVal > cCardVal {
+            Haptics.shared.notify(.success)
             increaseScore()
             imageFeedback(isPulsing: true)
             nextCardOnScreen()
         } else if nCardVal < cCardVal{
+            Haptics.shared.notify(.error)
             timer.count -= decreaseTime
             imageFeedback(isPulsing: false)
             nextCardOnScreen()

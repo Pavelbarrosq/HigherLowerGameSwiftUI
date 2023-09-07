@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E9BBA1912AA79DCC00799062 /* FeedbackGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BBA1902AA79DCC00799062 /* FeedbackGenerator.swift */; };
 		E9C011AA2A9652C400929F66 /* HighLowGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C011A92A9652C400929F66 /* HighLowGameApp.swift */; };
 		E9C011AC2A9652C400929F66 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C011AB2A9652C400929F66 /* Home.swift */; };
 		E9C011AE2A9652C500929F66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9C011AD2A9652C500929F66 /* Assets.xcassets */; };
@@ -17,10 +16,12 @@
 		E9C011BF2A9675BC00929F66 /* NewGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C011BE2A9675BC00929F66 /* NewGame.swift */; };
 		E9D378622A9B336F009614A4 /* CountdownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D378612A9B336F009614A4 /* CountdownTimer.swift */; };
 		E9DBBF882A9F884200657A1C /* EndGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DBBF872A9F884200657A1C /* EndGame.swift */; };
+		E9DEF39A2AA98F9800C5B2A8 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DEF3992AA98F9800C5B2A8 /* Haptics.swift */; };
+		E9DEF39C2AA9942000C5B2A8 /* GameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DEF39B2AA9942000C5B2A8 /* GameInfo.swift */; };
+		E9DEF39F2AA9B15300C5B2A8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9DEF3A12AA9B15300C5B2A8 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E9BBA1902AA79DCC00799062 /* FeedbackGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackGenerator.swift; sourceTree = "<group>"; };
 		E9C011A62A9652C400929F66 /* HighLowGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HighLowGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9C011A92A9652C400929F66 /* HighLowGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighLowGameApp.swift; sourceTree = "<group>"; };
 		E9C011AB2A9652C400929F66 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
@@ -31,6 +32,10 @@
 		E9C011BE2A9675BC00929F66 /* NewGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGame.swift; sourceTree = "<group>"; };
 		E9D378612A9B336F009614A4 /* CountdownTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimer.swift; sourceTree = "<group>"; };
 		E9DBBF872A9F884200657A1C /* EndGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGame.swift; sourceTree = "<group>"; };
+		E9DEF3992AA98F9800C5B2A8 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
+		E9DEF39B2AA9942000C5B2A8 /* GameInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfo.swift; sourceTree = "<group>"; };
+		E9DEF3A02AA9B15300C5B2A8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E9DEF3A22AA9B16000C5B2A8 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +60,7 @@
 		E9C0119D2A9652C400929F66 = {
 			isa = PBXGroup;
 			children = (
+				E9DEF3A12AA9B15300C5B2A8 /* Localizable.strings */,
 				E9C011A82A9652C400929F66 /* HighLowGame */,
 				E9C011A72A9652C400929F66 /* Products */,
 			);
@@ -93,7 +99,7 @@
 			children = (
 				E90B3C872A9925B200E0168C /* Timer */,
 				E9C011BA2A966F7300929F66 /* Card */,
-				E9BBA1902AA79DCC00799062 /* FeedbackGenerator.swift */,
+				E9DEF3992AA98F9800C5B2A8 /* Haptics.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -113,6 +119,7 @@
 				E9C011AB2A9652C400929F66 /* Home.swift */,
 				E9C011BE2A9675BC00929F66 /* NewGame.swift */,
 				E9DBBF872A9F884200657A1C /* EndGame.swift */,
+				E9DEF39B2AA9942000C5B2A8 /* GameInfo.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -159,6 +166,7 @@
 			knownRegions = (
 				en,
 				Base,
+				sv,
 			);
 			mainGroup = E9C0119D2A9652C400929F66;
 			productRefGroup = E9C011A72A9652C400929F66 /* Products */;
@@ -176,6 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9C011B12A9652C500929F66 /* Preview Assets.xcassets in Resources */,
+				E9DEF39F2AA9B15300C5B2A8 /* Localizable.strings in Resources */,
 				E9C011AE2A9652C500929F66 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -189,16 +198,29 @@
 			files = (
 				E9C011AC2A9652C400929F66 /* Home.swift in Sources */,
 				E9C011B92A96684500929F66 /* Card.swift in Sources */,
+				E9DEF39C2AA9942000C5B2A8 /* GameInfo.swift in Sources */,
 				E9DBBF882A9F884200657A1C /* EndGame.swift in Sources */,
 				E9C011BC2A966FA900929F66 /* CardDeck.swift in Sources */,
+				E9DEF39A2AA98F9800C5B2A8 /* Haptics.swift in Sources */,
 				E9C011AA2A9652C400929F66 /* HighLowGameApp.swift in Sources */,
 				E9C011BF2A9675BC00929F66 /* NewGame.swift in Sources */,
-				E9BBA1912AA79DCC00799062 /* FeedbackGenerator.swift in Sources */,
 				E9D378622A9B336F009614A4 /* CountdownTimer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E9DEF3A12AA9B15300C5B2A8 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E9DEF3A02AA9B15300C5B2A8 /* en */,
+				E9DEF3A22AA9B16000C5B2A8 /* sv */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E9C011B22A9652C500929F66 /* Debug */ = {
