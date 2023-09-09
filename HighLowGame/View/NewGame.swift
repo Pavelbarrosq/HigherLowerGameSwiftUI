@@ -19,10 +19,11 @@ struct NewGame: View {
     @State private var isDisabled: Bool = false
     @State private var timeLeft: Int = 0
     @State var timer = CountdownTimer()
-    @State var gameHasStarted = true
     @State private var isGameOver = false
     @State private var imageShadowColor = Color.black
     @State private var isRight = false
+    @State private var isShowingOverlay = true
+    @State private var blueValue = 10.0
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
@@ -56,7 +57,7 @@ struct NewGame: View {
                         .padding()
                     
                     Spacer()
-                        
+                    
                     HStack {
                         Button("LOWBUTTON_KEY") {
                             checkAnswerForLowerButton()
@@ -80,10 +81,21 @@ struct NewGame: View {
                 }
                 .padding()
                 .onReceive(timer.timer) { time in
-                    timerControl()
+                    if isShowingOverlay == false {
+                        isDisabled = false
+                        blueValue = .zero
+                        timerControl()
+                    }
                 }
                 .onAppear() {
-                    play()
+                    isDisabled = true
+                        play()
+                }
+            }
+            .blur(radius: blueValue)
+            .overlay {
+                if isShowingOverlay {
+                    CountdownOverlay(isShowingOverlay: $isShowingOverlay)
                 }
             }
         }
