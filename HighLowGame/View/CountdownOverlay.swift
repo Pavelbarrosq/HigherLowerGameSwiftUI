@@ -10,6 +10,7 @@ import SwiftUI
 struct CountdownOverlay: View {
     @State private var countDownFromThree = CountdownTimer()
     @Binding var isShowingOverlay: Bool
+    
     var body: some View {
         if isShowingOverlay {
             ZStack {

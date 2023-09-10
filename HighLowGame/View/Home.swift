@@ -9,11 +9,15 @@ import SwiftUI
 
 struct Home: View {
     
+    // MARK: - Variables
+    
     @State var howToPlayPresented = false
+    @Environment(\.colorScheme) var colorScheme
+    
+    // MARK: - Main View
     
     var body: some View {
         NavigationStack {
-            
             VStack {
                 
                 Spacer()
@@ -29,7 +33,7 @@ struct Home: View {
                     howToPlayPresented.toggle()
                 }
                 .padding()
-                .foregroundColor(.black)
+                .foregroundColor(colorScheme == .dark ? .white : .black)
             }
         }
         .sheet(isPresented: $howToPlayPresented) {
@@ -40,11 +44,12 @@ struct Home: View {
                 } else {
                     GameInfo()
                 }
-                
         }
         .navigationBarBackButtonHidden(true)
     }
 }
+
+// MARK: - Preview
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

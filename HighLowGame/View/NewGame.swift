@@ -10,6 +10,8 @@ import SwiftUI
 
 struct NewGame: View {
     
+    // MARK: - Varables
+    
     @State private var score = 0
     @State private var decreaseTime = 5
     @State private var currentCardImage = "blue_back"
@@ -21,16 +23,21 @@ struct NewGame: View {
     @State var timer = CountdownTimer()
     @State private var isGameOver = false
     @State private var imageShadowColor = Color.black
+    @State private var flipped = false
+    @State private var flashCardRotation = 0.0
+    @State private var contentRoation = 0.0
     @State private var isRight = false
     @State private var isShowingOverlay = true
     @State private var blueValue = 10.0
+    @State private var animationTime = 0.5
     @Environment(\.colorScheme) var colorScheme
+    
+    // MARK: - Main View
     
     var body: some View {
         NavigationStack {
             ZStack {
                 // Add background color
-                
                 VStack {
                     HStack {
                         Text(String(format: NSLocalizedString("SCORE_KEY %@", comment: ""), score.description))
@@ -44,22 +51,26 @@ struct NewGame: View {
                             .font(.title2)
                             .foregroundColor(colorScheme == .dark ? .white : .black)
                             .padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 20))
-                
                     }
                     
                     Spacer()
                     
-                    Image(currentCardImage)
-                        .resizable()
-                        .frame(width: 300, height: 460)
-                        .shadow(color: imageShadowColor, radius: 20)
-                        .aspectRatio(contentMode: .fit)
-                        .padding()
-                    
+                    HStack {
+                        Image(currentCardImage)
+                            .resizable()
+                            .frame(width: 300, height: 460)
+                            .shadow(color: imageShadowColor, radius: 20)
+                            .aspectRatio(contentMode: .fit)
+                            .padding()
+                            .rotation3DEffect(.degrees(contentRoation), axis: (x: 0, y: 1, z: 0))
+                    }
+                    .rotation3DEffect(.degrees(flashCardRotation), axis: (x: 0, y: 1, z: 0))
+
                     Spacer()
                     
                     HStack {
                         Button("LOWBUTTON_KEY") {
+                            flipFlashCard()
                             checkAnswerForLowerButton()
                         }
                             .foregroundColor(colorScheme == .dark ? .white : .black)
@@ -69,12 +80,14 @@ struct NewGame: View {
                         
                         Button("HIGHBUTTON_KEY") {
                             checkAnswerForHigherButton()
+                            flipFlashCard()
                         }
                             .foregroundColor(colorScheme == .dark ? .white : .black)
                             .disabled(isDisabled)
                             .buttonStyle(.bordered)
                             .font(.title)
                     }
+                    
     
                     Spacer()
                     
@@ -103,7 +116,19 @@ struct NewGame: View {
             EndGame(totalScore: score)
         }
         .navigationBarBackButtonHidden(true)
+    }
+    
+    // MARK: - Functions
+    
+    func flipFlashCard() {
+        withAnimation(Animation.linear(duration: animationTime)) {
+            flashCardRotation += 180
+        }
         
+        withAnimation(Animation.linear(duration: 0.001).delay(animationTime / 2)) {
+            contentRoation += 180
+            flipped.toggle()
+        }
         
     }
     
@@ -125,8 +150,11 @@ struct NewGame: View {
     }
     
     func nextCardOnScreen() {
+        
         guard let cCardImage = nextCard?.name else {return}
-        currentCardImage = cCardImage
+        withAnimation(Animation.linear(duration: 0.001).delay(animationTime / 2)) {
+            currentCardImage = cCardImage
+        }
         currentCard = nextCard
         guard let nCard = cardDeck?.getCard() else {return}
         nextCard = nCard
@@ -208,6 +236,8 @@ struct NewGame: View {
         }
     }
 }
+
+// MARK: - Preview
 
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {

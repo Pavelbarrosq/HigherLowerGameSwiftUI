@@ -16,8 +16,12 @@ struct EndGame: View {
         VStack {
             
             Text(String(format: NSLocalizedString("TOTALSCORE_KEY %@", comment: ""), totalScore.description))
+                .font(.title)
+                .padding(EdgeInsets(top: 20, leading: 20, bottom: 30, trailing: 20))
+                .bold()
             
             Text(String(format: NSLocalizedString("HIGHSCORE_KEY %@", comment: ""), highScore.description))
+                
         
             Spacer()
         
@@ -38,7 +42,7 @@ struct EndGame: View {
                         .font(.title)
                         .clipShape(Capsule())
             }
-            .padding()
+            .padding(EdgeInsets(top: 0, leading: 20, bottom: 20, trailing: 20))
         }
         .onAppear() {
             highScore = saveHighScore(currentScore: totalScore)
