@@ -8,8 +8,38 @@
 import SwiftUI
 
 struct Settings: View {
+    
+    @State private var inGameSeconds: Double = .zero
+    @AppStorage("highscore") private var highScore: Int = 0
+    @State private var isShowingAlert : Bool = false
+    
     var body: some View {
-        Text("Welcome to settings view")
+        VStack {
+            List {
+                Text(String(format: NSLocalizedString("INGAMESECONDS_KEY %@", comment: ""), inGameSeconds.description))
+                
+                Slider(value: $inGameSeconds, in: 50...120, step: 5) {
+                    Text("")
+                } minimumValueLabel: {
+                    Text("50")
+                        .font(.footnote)
+                        .fontWeight(.thin)
+                } maximumValueLabel: {
+                    Text("120")
+                        .font(.footnote)
+                        .fontWeight(.thin)
+                }
+                
+                Spacer()
+                Button("RESETHIGHSCORE_KEY") {
+                    highScore = 0
+                    isShowingAlert = true
+                }
+                .alert("HIGHSCOREALERT_KEY", isPresented: $isShowingAlert) {
+                    Button("OK", role: .cancel) { }
+                }
+            }
+        }
     }
 }
 

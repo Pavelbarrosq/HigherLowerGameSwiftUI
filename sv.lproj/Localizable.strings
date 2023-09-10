@@ -30,3 +30,9 @@
 "HOMEBUTTON_KEY" = "Hem";
 
 "PLAYAGAINBUTTON_KEY" = "Spela Igen";
+
+"INGAMESECONDS_KEY %@" = "Ändra spel sekunder: %@";
+
+"RESETHIGHSCORE_KEY" = "Nollställ hittils bästa poäng";
+
+"HIGHSCOREALERT_KEY" = "Nollställning av poäng lyckades";

@@ -30,3 +30,9 @@
 "HOMEBUTTON_KEY" = "Home";
 
 "PLAYAGAINBUTTON_KEY" = "Play again";
+
+"INGAMESECONDS_KEY %@" = "Change game seconds: %@";
+
+"RESETHIGHSCORE_KEY" = "Reset high score";
+
+"HIGHSCOREALERT_KEY" = "High score sucessfully reset to zero";
