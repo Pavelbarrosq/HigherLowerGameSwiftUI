@@ -88,7 +88,6 @@ struct NewGame: View {
                             .font(.title)
                     }
                     
-    
                     Spacer()
                     
                 }
@@ -129,7 +128,6 @@ struct NewGame: View {
             contentRoation += 180
             flipped.toggle()
         }
-        
     }
     
     func play() {
@@ -162,7 +160,6 @@ struct NewGame: View {
         print("CURRENTCARD: \(currentCard!.value)")
         print("NEXTCARD: \(nextCard!.value)")
 
-        
         if currentCard?.value == nCard.value {
             guard let nCard = cardDeck?.getCard() else {return}
             nextCard = nCard

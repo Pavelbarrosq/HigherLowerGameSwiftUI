@@ -19,6 +19,18 @@ struct Home: View {
     var body: some View {
         NavigationStack {
             VStack {
+                HStack {
+                    Spacer()
+                    
+                    NavigationLink {
+                        Settings()
+                    } label: {
+                        Image(systemName: "gearshape")
+                            .foregroundColor(colorScheme == .dark ? .white : .black)
+                    }
+                    .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
+                    .controlSize(.large)
+                }
                 
                 Spacer()
                 
