@@ -11,14 +11,15 @@ struct Settings: View {
     
     @State private var inGameSeconds: Double = .zero
     @AppStorage("highscore") private var highScore: Int = 0
+    @AppStorage("timeSelected") private var timeSelected: Double = .zero
     @State private var isShowingAlert : Bool = false
     
     var body: some View {
         VStack {
             List {
-                Text(String(format: NSLocalizedString("INGAMESECONDS_KEY %@", comment: ""), inGameSeconds.description))
+                Text(String(format: NSLocalizedString("INGAMESECONDS_KEY %@", comment: ""), timeSelected.description))
                 
-                Slider(value: $inGameSeconds, in: 50...120, step: 5) {
+                Slider(value: $timeSelected, in: 50...120, step: 5) {
                     Text("")
                 } minimumValueLabel: {
                     Text("50")

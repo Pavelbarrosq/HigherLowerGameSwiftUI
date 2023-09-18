@@ -100,6 +100,7 @@ struct NewGame: View {
                     }
                 }
                 .onAppear() {
+                    setStartTime()
                     isDisabled = true
                         play()
                 }
@@ -205,6 +206,12 @@ struct NewGame: View {
         score += 1
     }
     
+    private func setStartTime() {
+        guard let startTime = UserDefaults.standard.object(forKey: "timeSelected") else {return}
+        print("STARTTIME SELECTED IS: \(startTime)")
+        timer.count = startTime as! Int
+
+    }
     
     func timerControl() {
         if (timer.count > 0) {
